@@ -33,50 +33,96 @@ turtle画布上的费用主要涉及：
 | AliyunROSFullAccess             | 管理资源编排服务（ROS）的权限       |
 | AliyunComputeNestUserFullAccess | 管理计算巢服务（ComputeNest）的用户侧权限 |
 
-## 部署流程
+## 已有ECS实例部署流程
 
 1. 访问计算巢turtle画布[部署链接](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?spm=5176.24779694.0.0.2dc44d22bKq8lF&type=user&ServiceId=service-06f25f1b35084a379977)
-，按提示填写部署参数：
+，选择已有ECS实例选项：
 
-![image.png](2.png)
+![image.png](2-1.png)
 
-2. 参数填写完成后可以看到对应询价明细，确认参数后点击**下一步：确认订单**。
+2. 选择windows环境的实例，确认后点击**下一步：确认订单**。
 
-![image.png](3.png)
+![image.png](2-2.png)
 
 3. 确认订单完成后同意服务协议并点击**立即创建**进入部署阶段。
 
-![image.png](4.png)
+![image.png](2-3.png)
 
 4. 等待部署完成后进入服务实例管理，选择资源点击实例的资源ID。
 
-![image.png](5.png)
+![image.png](2-4.png)
 
 5. 通过VNC远程连接机器。
 
-![image.png](6.png)
+![image.png](2-5.png)
 ![image.png](7.png)
 
 6. 解锁远程页面并登录机器。
 
 ![image.png](8.png)
 
-7. 运行python代码画图。
+7. 安装python环境，检查.py文件是否存在
 
-> 在桌面上可以看到3个.py文件，双击运行，即可看到代码对应画出的圣诞树。
+注意：如果桌面不存在one.py, two.py, three.py, run.py  4个文件，请重新走流程1-6步，实例还是选同样的实例
+
+> 在C:/下找到python的安装包，按照示例勾选安装
+
+![image.png](2-6.png)
+
+> 打开cmd，运行pip install flask命令安装flask
+
+![image.png](2-7.png)
+
+8. 运行python代码画图。
+
+> 在桌面上双击运行one.py, two.py, three.py文件，即可看到代码对应画出的圣诞树。
 
 ![image.png](9.png)
 
-8. 启动flask服务，外网访问圣诞树图片。
-
-> 进入C:\Users\Administrator\Documents文件，cmd运行命令：python test.py启动flask框架，通过公网IP可外网访问生成的圣诞树图片。
-
-![image.png](10.png)
-![image.png](11.png)
-
 9. 外网访问圣诞图片。
 
-> 在控制台找到实例的公网IP地址，用公网IP地址进行访问。
+> 首先打开实例所属安全组入方向的5000端口，然后在桌面上双击运行run.py文件，即可看到开启flask服务，在控制台找到实例的公网IP地址，用公网IP地址进行/one，/two，/three地址的访问。
 
-![image.png](12.png)
-![image.png](13.png)
+![image.png](2-9.png)
+![image.png](2-8.png)
+![image.png](2-10.png)
+
+## 新建ECS实例部署流程
+
+1. 访问计算巢turtle画布[部署链接](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?spm=5176.24779694.0.0.2dc44d22bKq8lF&type=user&ServiceId=service-06f25f1b35084a379977)
+，按提示填写部署参数完成后可以看到对应询价明细，确认参数后点击**下一步：确认订单**。
+
+![image.png](3-1.png)
+
+2. 确认订单完成后同意服务协议并点击**立即创建**进入部署阶段。
+
+![image.png](3-2.png)
+
+3. 等待部署完成后进入服务实例管理，选择资源点击实例的资源ID。
+
+![image.png](5.png)
+
+4. 通过VNC远程连接机器。
+
+![image.png](6.png)
+![image.png](7.png)
+
+5. 解锁远程页面并登录机器。
+
+> 登录机器初始密码为Mima124161，可自行更改。
+
+![image.png](8.png)
+
+6. 运行python代码画图。
+
+> 在桌面上双击运行one.py, two.py, three.py文件，即可看到代码对应画出的圣诞树。
+
+![image.png](3-3.png)
+
+7. 外网访问圣诞图片。
+
+> 在桌面上双击运行run.py文件，即可看到开启flask服务，在控制台找到实例的公网IP地址，用公网IP地址进行/one，/two，/three地址的访问。
+
+![image.png](3-5.png)
+![image.png](3-4.png)
+![image.png](3-6.png)
